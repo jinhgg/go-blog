@@ -1,2 +1,2 @@
 # go-blog
-a blog based on gin
+a blog based on gin mysql
