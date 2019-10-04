@@ -5,7 +5,7 @@ import (
     "fmt"
 
     "github.com/jinzhu/gorm"
-    "github.com/go-sql-driver/mysql"
+    _ "github.com/jinzhu/gorm/dialects/mysql"
 
     "gin-blog/pkg/setting"
 )
