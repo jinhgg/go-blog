@@ -1,9 +1,7 @@
 package api
 
 import (
-    "log"
     "net/http"
-    "fmt"
 
     "github.com/gin-gonic/gin"
     "github.com/astaxie/beego/validation"
@@ -11,6 +9,7 @@ import (
     "gin-blog/pkg/e"
     "gin-blog/pkg/util"
     "gin-blog/models"
+    "gin-blog/pkg/logging"
 )
 
 type auth struct {
@@ -21,8 +20,6 @@ type auth struct {
 func GetAuth(c *gin.Context) {
     username := c.Query("username")
     password := c.Query("password")
-    fmt.Println(username)
-    fmt.Println(password)
 
     valid := validation.Validation{}
     a := auth{Username: username, Password: password}
@@ -47,7 +44,7 @@ func GetAuth(c *gin.Context) {
         }
     } else {
         for _, err := range valid.Errors {
-            log.Println(err.Key, err.Message)
+            logging.Info(err.Key, err.Message)
         }
     }
 
